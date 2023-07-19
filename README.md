@@ -15,7 +15,7 @@ In each folder that you just created, add the following content:
 
 - A new file called `main.py`. This will be the main script to run for each analysis.
 - A `Resources` folder that contains the CSV files you used. Make sure that your script has the correct path to the CSV file.
-- An `analysis` folder that contains your text file that has the results from your analysis.
+- An `Analysis` folder that contains your text file that has the results from your analysis.
 
 Push these changes to GitHub or GitLab.
 
