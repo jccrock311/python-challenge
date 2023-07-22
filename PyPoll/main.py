@@ -12,7 +12,7 @@ csvoutput = os.path.join(pybank_dir, "analysis/election_output.txt")
 # three lists for capturing votes and a counter for the total number of votes
 candidates = []
 num_votes = []
-percent_votes = []
+vote_percentages = []
 total_votes = 0
 
 # opening the .csv and how to read it
@@ -42,17 +42,29 @@ with open(csvpath, newline = "") as csvfile:
             num_votes[index] += 1
     
 
-    # add percentages to list
+    # add/map percentages to list
     for votes in num_votes:
         percentage = (votes/total_votes) * 100
         percentage = "%.3f%%" % percentage
-        percent_votes.append(percentage)
+        vote_percentages.append(percentage)
     
     # Finding the winning candidate
     winner = max(num_votes)
     index = num_votes.index(winner)
     winning_candidate = candidates[index]
 
+# print results to terminal
+print("Election Results")
+print("--------------------------")
+print(f"Total Votes: {str(total_votes)}")
+print("--------------------------")
+
+for i in range(len(candidates)):
+    print(f"{candidates[i]}: {str(vote_percentages[i])} ({str(num_votes[i])})")
+
+print("--------------------------")
+print(f"Winner: {winning_candidate}")
+print("--------------------------")
 
 # Exporting to .txt file
 output = open(csvoutput, "w")
@@ -64,7 +76,7 @@ line4 = str("--------------------------")
 output.write('{}\n{}\n{}\n{}\n'.format(line1, line2, line3, line4))
 
 for i in range(len(candidates)):
-    line = str(f"{candidates[i]}: {str(percent_votes[i])} ({str(num_votes[i])})")
+    line = str(f"{candidates[i]}: {str(vote_percentages[i])} ({str(num_votes[i])})")
     output.write('{}\n'.format(line))
 
 line5 = "--------------------------"

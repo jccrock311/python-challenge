@@ -53,6 +53,15 @@ great_decrease = min(average_change)
 increase_month = average_change.index(great_increase)
 decrease_month = average_change.index(great_decrease)
 
+# printing results to terminal
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months: {str(total_months)}")
+print(f"Total: ${str(total_money)}")
+print(f"Average Change: ${str(change)}")
+print(f"Greatest Increase in Profits: {str(month[increase_month])}, ${str(great_increase)}")
+print(f"Greatest Decrease in Profits: {str(month[decrease_month])}, ${str(great_decrease)}")
+
 # creating the output .txt file and setting it up accordingly with '.write'
 output = open(csvoutput, "w")
 
